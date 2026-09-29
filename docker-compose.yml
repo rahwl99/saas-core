@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: saas_core_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespassword
+      POSTGRES_DB: saas_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - saas_pgdata:/var/lib/postgresql/data
+
+volumes:
+  saas_pgdata:
